@@ -1,0 +1,59 @@
+service: 'portfolio-backend'
+
+useDotenv: true
+
+plugins:
+  - serverless-plugin-optimize
+  - serverless-offline
+  - serverless-dynamodb-local
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  environment:
+    TWITTER_API_KEY: ${env:TWITTER_API_KEY}
+    TWITTER_SECRET_KEY: ${env:TWITTER_SECRET_KEY}
+    TWITTER_ACCESS_TOKEN: ${env:TWITTER_ACCESS_TOKEN}
+    TWITTER_SECRET_ACCESS_TOKEN: ${env:TWITTER_SECRET_ACCESS_TOKEN}
+    IS_OFFLINE: ${env:IS_OFFLINE}
+    PORTFOLIOS_TABLE_NAME: ${self:custom.PortfoliosTable.name}
+    TABLE_NAME: PortfoliosTable-dev
+    DYNAMODB_ENDPOINT: ${self:custom.endpoints.dynamodbURL}
+  iamRoleStatements:
+        - ${file(iam/PortfoliosTableIAM.yml):PortfoliosTableIAM}
+
+package:
+    individually: true
+
+resources:
+    Resources:
+        PortfoliosTable: ${file(resources/PortfoliosTable.yml):PortfoliosTable}
+
+functions:
+  main:
+    handler: dist/serverless.handler
+    events:
+      - http:
+          method: ANY
+          path: /{any+}
+
+custom:
+    PortfoliosTable:
+        name: !Ref PortfoliosTable
+        arn: !GetAtt PortfoliosTable.Arn
+    dynamodb:
+      stages:
+        - ${self:provider.stage}
+      start:
+        migrate: true
+        seed: true
+      seed: 
+        portfolio:
+          sources:
+            - table: PortfoliosTable-dev
+              sources: [./seeders/portfolio.seed.json]
+
+    endpoints:
+      dynamodbURL: 'http://localhost:8000'
+    
