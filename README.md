@@ -151,4 +151,4 @@ You can use the postman collection attached **portfolio.postman_collection.json*
 
 - For this test, I spent almost 16hrs. It wasn't for the complexity of the project, it was because I had to investigate the different technologies required for the test. I want to be honest, it was my first time working with dynamoDB, and serverless, even NestJS. It was a good opportunity to show my ability to adapt to different environments and technologies
 - I could not deploy the app because AWS has not verified my personal account. For this reason, I am running the project locally.
-
+- I did not implement the UI section of the test.
