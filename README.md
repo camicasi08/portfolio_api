@@ -76,7 +76,7 @@ When we run the **start** command the database is going to be populated with def
 
 ## Using the API
 
-You can use the postman collection attached **portfolio_collection.json** to test the endpoints.
+You can use the postman collection attached **portfolio.postman_collection.json** to test the endpoints.
 
 ### GET /dev/portfolio/:id
 

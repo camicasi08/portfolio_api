@@ -1,0 +1,60 @@
+{
+	"info": {
+		"_postman_id": "e220c56e-e108-4ab9-b120-df606f06e0da",
+		"name": "Portfolio Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get portfolio",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/dev/portfolio/7339a668-b10a-4e91-af8e-c1078555e863",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dev",
+						"portfolio",
+						"7339a668-b10a-4e91-af8e-c1078555e863"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Porfolio",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"CamiloA\",\r\n    \"address\": \"Calle falsa 12345\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/dev/portfolio/7339a668-b10a-4e91-af8e-c1078555e863",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"dev",
+						"portfolio",
+						"7339a668-b10a-4e91-af8e-c1078555e863"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
