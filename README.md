@@ -16,7 +16,7 @@ For this project we are using the **[serverless framework](https://www.serverles
 npm install -g serverless
 ```
 
-Also  to make the local testing we are using a dynamoDb local instance. We must install the service to run locally dynamo
+Also  to make the local testing we are using a dynamoDb local instance. We must install the service to run locally dynamo (run the command in the project root)
 
 ```bash
 sls dynamodb install
