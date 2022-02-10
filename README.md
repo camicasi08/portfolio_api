@@ -33,7 +33,7 @@ Use the .env.example file as a guide to create the .env file. Here, you should s
 ```bash
 npm test
 ```
-
+### Start application 
 ```bash
 npm start
 ```
